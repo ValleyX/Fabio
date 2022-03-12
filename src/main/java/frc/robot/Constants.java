@@ -45,7 +45,7 @@ public class Constants {
 	 * Set to zero to skip waiting for confirmation, set to nonzero to wait and
 	 * report to DS if action fails.
 	 */
-	public static final int kTimeoutMs = 30;
+	public static final int kTimeoutMs = 120;//30
 	
 	/* Choose so that Talon does not report sensor out of phase */
 	public static boolean kSensorPhase = true;
@@ -62,13 +62,19 @@ public class Constants {
      */
     //static final Gains kGains = new Gains(0.15, 0.0, 1.0, 0.0, 0, 1.0);
 	//static final Gains kGains = new Gains(0.125, 0.0001, 1.25, 0.0, 0, 1.0);
-	public static final Gains kGains = new Gains(0.125, 0.000, 0, 0.0, 0, 1.0);
+	public static final Gains kGains = new Gains(0.25, 0.0000, 0, 0.0, 0, 1.0); // 0.125, 0.000, 0, 0.0, 0, 1.0
 
 	public static boolean kGyroReversed = true;
 
 	//decrease = less sensitive 
-	public static final double kp = .01; //.01
-	public static final double ki = 0.02; //0.02
-	public static final double kd = 0.0029; //0.
+	public static final double kp = .05 * 2; //.01
+	public static final double ki = 0.0004 * 2; //0.02
+	public static final double kd = 0.005 * 2; //0.
+/*
+	//best so far
+	public static final double kp = .05; //.01
+	public static final double ki = 0.0004; //0.02
+	public static final double kd = 0.005; //0.
+*/
 }
 
