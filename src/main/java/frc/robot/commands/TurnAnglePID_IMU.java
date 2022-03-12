@@ -51,10 +51,13 @@ public class TurnAnglePID_IMU extends PIDCommand {
         m_count = 0;
        
     // Set the controller to be continuous (because it is an angle controller)
-    getController().enableContinuousInput(-180, 180);
+    getController().enableContinuousInput(-360, 360);
     // Set the controller tolerance - the delta tolerance ensures the robot is stationary at the
     // setpoint before it is considered as having reached the reference
-    getController().setTolerance(.5,10.0);
+    getController().setTolerance(3,20.0);
+
+
+
   }
 
 
@@ -64,22 +67,27 @@ public class TurnAnglePID_IMU extends PIDCommand {
   public boolean isFinished() {
   //SmartDashboard.putNumber("Current Angle is: ",   getAdjustedYaw());
     // End when the controller is at the reference.
-
-   
-    if ((Math.abs(m_drive.getAdjustedYaw() - m_targetDegree) <= 13 ) && m_count++ > 20)
+    //return false;
+   if (getController().atSetpoint() )
+   //if ((Math.abs(m_drive.getAdjustedYaw() - m_targetDegree) <= 13 ) && m_count++ > 20)
+    //if ((Math.abs(m_drive.getAdjustedYaw() - m_targetDegree) <= 3 ) && m_count++ > 20)
+    
     {
+      
       try {
         Thread.sleep(250);
     } catch (InterruptedException e) {
         // TODO Auto-generated catch block
         e.printStackTrace();
     }
+    
       return true;
     }
     else
     {
       return false;
     }
+    
     
     
    // return getController().atSetpoint();

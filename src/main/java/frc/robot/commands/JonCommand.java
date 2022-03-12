@@ -145,8 +145,7 @@ public class JonCommand extends CommandBase {
     @Override
     public void initialize() {
         SmartDashboard.putString("joncommand", "in init");
-
-
+        m_driveTrain.SetPercentOutput(1, 30);
     }
     
     public void PrimaryIntakeEnable()
@@ -320,7 +319,7 @@ public class JonCommand extends CommandBase {
 
         
     
-
+/*
         if (buttonB == true)
         {
             PrimaryIntakeExpel();
@@ -330,12 +329,12 @@ public class JonCommand extends CommandBase {
         {
             PrimaryIntakeDisable();
         }
-
+*/
 
         if (buttonX == true && Math.abs(leftYstick) <= 0.1 && Math.abs(rightYstick) <= 0.1)
         { 
 
-            velocityRPM = 7500;
+            velocityRPM = 8500;
             SmartDashboard.putNumber("Velocity RPM got", velocityRPM);
             m_shooterDrive.getLeftTalon().set(ControlMode.Velocity, velocityRPM);
             m_shooterDrive.getRightTalon().set(ControlMode.Velocity, velocityRPM);

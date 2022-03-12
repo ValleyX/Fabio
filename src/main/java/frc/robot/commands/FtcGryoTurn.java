@@ -113,7 +113,7 @@ public class FtcGryoTurn extends CommandBase {
 
         m_driveTrain.getDifferentialDrive().setSafetyEnabled(false);
 
-        m_driveTrain.SetPercentOutput(1, Constants.kTimeoutMs); //max possible speed
+      //  m_driveTrain.SetPercentOutput(1, Constants.kTimeoutMs); //max possible speed
         
     
     }

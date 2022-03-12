@@ -19,6 +19,7 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import edu.wpi.first.wpilibj2.command.WaitCommand;
 
 import java.util.concurrent.TimeoutException;
+import java.lang.Thread;
 
 import javax.print.CancelablePrintJob;
 
@@ -381,6 +382,15 @@ rightFront.follow(rightBack);
         leftBack.set(speed);
         rightBack.set(speed);
 
+    }
+    public void sleep(int sleep)
+    {
+        try {
+            Thread.sleep(sleep);
+        } catch (InterruptedException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
     }
 
     public boolean IsLeftClose(double value)
