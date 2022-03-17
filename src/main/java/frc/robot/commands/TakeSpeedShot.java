@@ -103,7 +103,7 @@ public class TakeSpeedShot extends CommandBase {
   
         if  (m_shooterDrive.getRightTalon().getSelectedSensorVelocity(0) >= m_velocityRPM)
         {
-          m_conveyor.getConveyorMotor().set(0.6);
+          m_conveyor.getConveyorMotor().set(0.5);
           m_feederFront.getFeederFront().set(0.5);
 
         }

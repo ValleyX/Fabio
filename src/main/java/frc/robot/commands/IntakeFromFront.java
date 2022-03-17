@@ -106,7 +106,7 @@ public class IntakeFromFront extends CommandBase {
             m_intakeFront.getFrontIntakeMotor().set(intakein);
             m_feederSystemFront.getFeederFront().set(1);
            // m_sorter.getSorter().set(1);
-            m_conveyor.getConveyorMotor().set(0.6);
+            m_conveyor.getConveyorMotor().set(0.5);
             frontIntakeEnable = true;
         
     }

@@ -87,7 +87,11 @@ public class SequentialCommandGroup1ball extends SequentialCommandGroup {
 
 
         new TakeSpeedShot(beanBreakMid, beanBreakFront, conveyor, shoot, feederfront, InitialShotSpeed, oneballshot),
-        
+
+        //test
+        new Sleep(5000),
+        //test
+
         //new DriveTrain().sleep(5000),
 
         new HeadingDrive(driveTrain, 0.8, 10, 0)

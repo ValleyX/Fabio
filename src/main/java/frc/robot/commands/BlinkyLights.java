@@ -54,14 +54,14 @@ public class BlinkyLights extends CommandBase {
 
     public void SwitchLights(double test)
     {
-        m_driveBaseBlinkin1.getDriveBlinkin1().set(test);
-        m_driveBaseBlinkin2.getDriveBlinkin2().set(test);
+        m_driveBaseBlinkin1.getDriveBlinkin1().setSpeed(test);
+        m_driveBaseBlinkin2.getDriveBlinkin2().setSpeed(test);
     }
 
     // Called when the command is initially scheduled.
     @Override
     public void initialize() {
-        SwitchLights(-0.99);
+        SwitchLights(1985);
     }
 
     // Called every time the scheduler runs while the command is scheduled.

@@ -39,9 +39,9 @@ import frc.robot.subsystems.BeanBreakMid;
 public class SequentialCommandGroup3ball extends SequentialCommandGroup {
 
     final double InitialShotSpeed = 7500; //7500
-    final double SecondShotSpeed = 8350;  //10000
+    final double SecondShotSpeed = 8300;  //10000
     final double secondBallHeading = 100;
-    final double thirdBallHeading = 4;
+    final double thirdBallHeading = 24;
     final boolean oneballshot = false;
     final boolean twoballshot = true;
 
