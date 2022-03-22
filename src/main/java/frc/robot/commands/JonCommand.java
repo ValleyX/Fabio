@@ -155,10 +155,11 @@ public class JonCommand extends CommandBase {
         
         SmartDashboard.putString("joncommand", "in init");
         m_driveTrain.SetPercentOutput(1, 30);
-        
+      /*  
         CameraServer.startAutomaticCapture();
-        CameraServer.addAxisCamera("USBCamera1");
-        CameraServer.putVideo("USBCamera1", 320, 240);
+        CameraServer.addAxisCamera("USBCamera y");
+        CameraServer.putVideo("USBCamera y", 320, 240);
+        */
         /*
         CvSink cvSink = CameraServer.getVideo();
         CvSource outputStream = CameraServer.putVideo("camera 1", 320, 240);
@@ -327,6 +328,8 @@ public class JonCommand extends CommandBase {
             SwitchLights(-0.15);
         }
 
+
+
         if ((beanBreakFront == false || beanBreakBack == false) && beanBreakMid == true)
         {
             if (beanBreakFront == false)
@@ -383,10 +386,10 @@ public class JonCommand extends CommandBase {
         
         
         
-        if (buttonB == true && Math.abs(leftYstick) <= 0.1 && Math.abs(rightYstick) <= 0.1)
+        if (buttonB == true /*&& Math.abs(leftYstick) <= 0.1 && Math.abs(rightYstick) <= 0.1*/)
         { 
 
-            velocityRPM = 4000;
+            velocityRPM = 3800;
             SmartDashboard.putNumber("Velocity RPM got", velocityRPM);
             m_shooterDrive.getLeftTalon().set(ControlMode.Velocity, velocityRPM);
             m_shooterDrive.getRightTalon().set(ControlMode.Velocity, velocityRPM);
@@ -395,8 +398,7 @@ public class JonCommand extends CommandBase {
             {
                 m_feederSystemFront.getFeederFront().set(0.8); 
             }
-
-            
+  
             else if (beanBreakBack == false)
             {
                 m_feederSystemBack.getFeederBack().set(0.8);
@@ -406,8 +408,8 @@ public class JonCommand extends CommandBase {
                 m_feederSystemBack.getFeederBack().set(0);
                 m_feederSystemFront.getFeederFront().set(0);
             }
-                        
-            if ( m_shooterDrive.getRightTalon().getSelectedSensorVelocity(0) >= (velocityRPM - 200))
+            
+            if ( m_shooterDrive.getRightTalon().getSelectedSensorVelocity(0) >= (velocityRPM - 100))
             {
                 m_conveyor.getConveyorMotor().set(0.6);
             }
@@ -442,10 +444,10 @@ public class JonCommand extends CommandBase {
         }
 
 
-        if (buttonX == true && Math.abs(leftYstick) <= 0.1 && Math.abs(rightYstick) <= 0.1)
+        if (buttonX == true /*&& Math.abs(leftYstick) <= 0.1 && Math.abs(rightYstick) <= 0.1*/)
         { 
 
-            velocityRPM = 7500;
+            velocityRPM = 7300;
             SmartDashboard.putNumber("Velocity RPM got", velocityRPM);
             m_shooterDrive.getLeftTalon().set(ControlMode.Velocity, velocityRPM);
             m_shooterDrive.getRightTalon().set(ControlMode.Velocity, velocityRPM);

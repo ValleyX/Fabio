@@ -53,6 +53,7 @@ public class IntakeFromFront extends CommandBase {
         private boolean frontIntakeEnable = false;
         private boolean shooton = false;
         private boolean m_secondShot = false;
+        private boolean m_count;
 
 
  
@@ -106,7 +107,7 @@ public class IntakeFromFront extends CommandBase {
             m_intakeFront.getFrontIntakeMotor().set(intakein);
             m_feederSystemFront.getFeederFront().set(1);
            // m_sorter.getSorter().set(1);
-            m_conveyor.getConveyorMotor().set(0.5);
+            m_conveyor.getConveyorMotor().set(0.7);
             frontIntakeEnable = true;
         
     }

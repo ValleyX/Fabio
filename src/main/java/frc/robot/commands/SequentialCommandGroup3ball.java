@@ -38,8 +38,8 @@ import frc.robot.subsystems.BeanBreakMid;
  */
 public class SequentialCommandGroup3ball extends SequentialCommandGroup {
 
-    final double InitialShotSpeed = 7500; //7500
-    final double SecondShotSpeed = 8300;  //10000
+    final double InitialShotSpeed = 8100; //7500
+    final double SecondShotSpeed = 8000;  //10000
     final double secondBallHeading = 100;
     final double thirdBallHeading = 24;
     final boolean oneballshot = false;
@@ -96,12 +96,12 @@ public class SequentialCommandGroup3ball extends SequentialCommandGroup {
            new HeadingDrive(driveTrain, 1, 3.1, 0)
                 ),
 
-        new TakeSpeedShot(beanBreakMid, beanBreakFront, conveyor, shoot, feederfront, SecondShotSpeed, twoballshot),
+        new TakeSpeedShot(beanBreakMid, beanBreakFront, conveyor, shoot, feederfront, InitialShotSpeed, twoballshot),
         //drive back take two shots 
 
         //turns to 3rd ball and goes to grab it
         //new TurnAnglePID_IMU(driveTrain, secondBallHeading),
-        new FtcGryoTurn(driveTrain, 1, secondBallHeading),
+        new FtcGryoTurn(driveTrain, 0.8, secondBallHeading),
         
         parallel(
             new IntakeFromFront(shoot,intakeFront,conveyor,
@@ -113,7 +113,7 @@ public class SequentialCommandGroup3ball extends SequentialCommandGroup {
         //turns to 3rd ball and goes to grab it
 
 
-        new HeadingDrive(driveTrain, 1, -6, secondBallHeading),
+        new HeadingDrive(driveTrain, 1, -5.5, secondBallHeading),
 
       //  new TurnAnglePID_IMU(driveTrain, thirdBallHeading),
         new FtcGryoTurn(driveTrain, 1, thirdBallHeading),

@@ -194,7 +194,7 @@ public class HeadingDrive extends CommandBase {
     public boolean isFinished()
      {
          //return false;
-         final double deadband = 400;
+         final double deadband = 600;
          SmartDashboard.putBoolean("IsLeftClose", m_driveTrain.IsLeftClose(deadband));
          SmartDashboard.putBoolean("IsRightClose", m_driveTrain.IsRightClose(deadband));
 

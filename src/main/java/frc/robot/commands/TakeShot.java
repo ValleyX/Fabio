@@ -62,7 +62,7 @@ public class TakeShot extends CommandBase {
     public void initialize() {
                    SmartDashboard.putString("take shot ", "initialize");
                    
-                    m_velocityRPM = SmartDashboard.getNumber("Velocity RPM", 8000);
+                    m_velocityRPM = SmartDashboard.getNumber("Velocity RPM", 8100);
                    SmartDashboard.putNumber("Velocity RPM got", m_velocityRPM);
                    
                    m_shooterDrive.getLeftTalon().set(ControlMode.Velocity, m_velocityRPM);
