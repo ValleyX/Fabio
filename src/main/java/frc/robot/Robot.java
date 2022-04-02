@@ -19,20 +19,25 @@ import edu.wpi.first.hal.HAL;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
+import frc.robot.commands.JonCommandRecored;
 import frc.robot.commands.TurnAnglePID_IMU;
 
 /**
  * The VM is configured to automatically run this class, and to call the
  * functions corresponding to each mode, as described in the TimedRobot
  * documentation. If you change the name of this class or the package after
- * creating this project, you must also update the build.properties file in 
+ * creating this project, you must also update the build.properties file in
  * the project.
  */
 public class Robot extends TimedRobot {
 
     private Command m_autonomousCommand;
+    private Command m_testCommand;
 
     private RobotContainer m_robotContainer;
+
+    private JoyStorage joy[];
+    private boolean first = true;
 
     /**
      * This function is run when the robot is first started up and should be
@@ -40,35 +45,55 @@ public class Robot extends TimedRobot {
      */
     @Override
     public void robotInit() {
-        // Instantiate our RobotContainer.  This will perform all our button bindings, and put our
+        // Instantiate our RobotContainer. This will perform all our button bindings,
+        // and put our
         // autonomous chooser on the dashboard.
         m_robotContainer = RobotContainer.getInstance();
         HAL.report(tResourceType.kResourceType_Framework, tInstances.kFramework_RobotBuilder);
 
-        CameraServer.startAutomaticCapture(0);
-        CameraServer.startAutomaticCapture(1);
+        // CameraServer.startAutomaticCapture(0);
+        // CameraServer.startAutomaticCapture(1);
+        
+       // joy = new JoyStorage[750];
+        /*
+        for (int i = 0; i < 750; i++)
+        {
+            joy[i] = new JoyStorage((double)i, (double)-i, true, false, true, false, true);
+        }
+        
+
+   
+        JoyReadWrite.writeObject(joy, "testrecordrobot");
+        */
+      
+         // joy = JoyReadWrite.readObject("testRecord");
     }
 
     /**
-    * This function is called every robot packet, no matter the mode. Use this for items like
-    * diagnostics that you want ran during disabled, autonomous, teleoperated and test.
-    *
-    * <p>This runs after the mode specific periodic functions, but before
-    * LiveWindow and SmartDashboard integrated updating.
-    */
+     * This function is called every robot packet, no matter the mode. Use this for
+     * items like
+     * diagnostics that you want ran during disabled, autonomous, teleoperated and
+     * test.
+     *
+     * <p>
+     * This runs after the mode specific periodic functions, but before
+     * LiveWindow and SmartDashboard integrated updating.
+     */
     @Override
     public void robotPeriodic() {
-        // Runs the Scheduler.  This is responsible for polling buttons, adding newly-scheduled
-        // commands, running already-scheduled commands, removing finished or interrupted commands,
-        // and running subsystem periodic() methods.  This must be called from the robot's periodic
+        // Runs the Scheduler. This is responsible for polling buttons, adding
+        // newly-scheduled
+        // commands, running already-scheduled commands, removing finished or
+        // interrupted commands,
+        // and running subsystem periodic() methods. This must be called from the
+        // robot's periodic
         // block in order for anything in the Command-based framework to work.
         CommandScheduler.getInstance().run();
     }
 
-
     /**
-    * This function is called once each time the robot enters Disabled mode.
-    */
+     * This function is called once each time the robot enters Disabled mode.
+     */
     @Override
     public void disabledInit() {
     }
@@ -78,8 +103,9 @@ public class Robot extends TimedRobot {
     }
 
     /**
-    * This autonomous runs the autonomous command selected by your {@link RobotContainer} class.
-    */
+     * This autonomous runs the autonomous command selected by your
+     * {@link RobotContainer} class.
+     */
     @Override
     public void autonomousInit() {
         m_autonomousCommand = m_robotContainer.getAutonomousCommand();
@@ -91,8 +117,8 @@ public class Robot extends TimedRobot {
     }
 
     /**
-    * This function is called periodically during autonomous.
-    */
+     * This function is called periodically during autonomous.
+     */
     @Override
     public void autonomousPeriodic() {
     }
@@ -117,16 +143,56 @@ public class Robot extends TimedRobot {
 
     @Override
     public void testInit() {
+/*
+        m_testCommand = m_robotContainer.getTestCommand();
+
+        // schedule the autonomous command (example)
+        if (m_testCommand != null) {
+            m_testCommand.schedule();
+        }
+        */
         // Cancels all running commands at the start of test mode.
         CommandScheduler.getInstance().cancelAll();
-        //new TurnAnglePID_IMU(m_robotContainer.m_driveTrain, 90);
+        // new TurnAnglePID_IMU(m_robotContainer.m_driveTrain, 90);
     }
 
     /**
-    * This function is called periodically during test mode.
-    */
+     * This function is called periodically during test mode.
+     */
     @Override
     public void testPeriodic() {
+        /*
+        new JonCommandRecored("testRecord", m_driveTrain, m_shooterDrive, m_intakeFront, m_intakeBack, 
+                                m_conveyor, m_feederSystemFront, m_feederSystemBack, m_sorter, m_frontIntakeArmSub, m_backIntakeArm,
+                                m_beanBreakMid, m_beanBreakBack, m_beanBreakFront, m_deathClimbers, m_driveBaseBlinkin1, m_driveBaseBlinkin2));
+
+       JoyStorage joy1;
+        
+        if (first) {
+            for (int i = 0; i < 750; i++)
+            {
+            joy1 = joy[i];
+            System.out.println("lefty " + joy1.leftYstick);
+           // System.out.println("lefty " + joy1.lefty + " righty " + joy1.righty + " buttonA " + joy1.buttonA);
+           // joy1 = joy[1];
+            //System.out.println("lefty " + joy1.lefty + " righty " + joy1.righty + " buttonA " + joy1.buttonA);
+            first = false;
+            }
+        }
+        */
+    }
+
+    public void EverythingPower(double power)
+    {
+        m_robotContainer.m_shooterDrive.allpowerShoot(power);
+        m_robotContainer.m_driveTrain.allpower(power);
+        m_robotContainer.m_feederSystemBack.getFeederBack().set(power);
+        m_robotContainer.m_feederSystemFront.getFeederFront().set(power);
+        m_robotContainer.m_intakeBack.getBackIntakeMotor().set(power);
+        m_robotContainer.m_intakeFront.getFrontIntakeMotor().set(power);
+        m_robotContainer.m_sorter.getSorter().set(power);
+        m_robotContainer.m_conveyor.getConveyorMotor().set(power);
+
     }
 
 }
