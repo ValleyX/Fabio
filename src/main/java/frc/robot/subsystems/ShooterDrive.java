@@ -100,5 +100,12 @@ shooterLeft = new WPI_TalonFX(7);
     {
         return shooterRight;
     }
+
+    public void allpowerShoot(double power)
+    {
+        shooterLeft.set(power);
+        shooterRight.set(power);
+
+    }
 }
 
