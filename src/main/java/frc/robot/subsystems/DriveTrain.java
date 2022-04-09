@@ -87,6 +87,7 @@ leftFront = new WPI_TalonFX(0);
 
 leftBack = new WPI_TalonFX(1);
  
+
  
 
 motorCtrolGroupLeft = new MotorControllerGroup(leftFront, leftBack  );
@@ -211,13 +212,16 @@ rightFront.setSensorPhase(Constants.kSensorPhase);
 rightBack.setInverted(!Constants.kMotorInvert);
 rightFront.setInverted(!Constants.kMotorInvert);
 
-
+/*
     leftBack.setNeutralMode(NeutralMode.Brake);
     leftFront.setNeutralMode(NeutralMode.Brake);
     rightBack.setNeutralMode(NeutralMode.Brake);
     rightFront.setNeutralMode(NeutralMode.Brake);
-
-    
+*/
+leftBack.setNeutralMode(NeutralMode.Coast);
+leftFront.setNeutralMode(NeutralMode.Coast);
+rightBack.setNeutralMode(NeutralMode.Coast);
+rightFront.setNeutralMode(NeutralMode.Coast);
 
 
     /* Config the peak and nominal outputs, 12V means full */
@@ -333,6 +337,8 @@ rightFront.follow(rightBack);
         //cANCoderLeft.setPosition(0);
         //talonSRX1.stopMotor();
         
+
+
         
         double currentPositionLeft = leftBack.getSelectedSensorPosition(0);
 		double targetPositionRotationsLeft = currentPositionLeft + (c_countsPerFoot * numberLeftFeet);
@@ -347,6 +353,9 @@ rightFront.follow(rightBack);
 		//double targetPositionRotationsRight = currentPositionRight + (10 * 4096);
 		rightBack.set(ControlMode.Position, targetPositionRotationsRight);
 
+
+
+        
           /*      
         while (leftBack.isAlive() && rightBack.isAlive())
         {

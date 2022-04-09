@@ -73,16 +73,18 @@ public class LimeLightTest extends CommandBase {
         double x = tx.getDouble(0.0);
         double y = ty.getDouble(0.0);
         double area = ta.getDouble(0.0);
-        double heightGoal = 50; //104
+        double heightGoal = 104; //104
         double heightCamera = 22; //to be changed in the future 
         double angle = 5.7; //in degrees 
 
         double distance = ((heightGoal-heightCamera))/Math.tan(Math.toRadians(angle+y));
+        double diagDistance = ((heightGoal-heightCamera))/Math.sin(Math.toRadians(angle+y));
 
 
         SmartDashboard.putNumber("LimeLightX", x);
         SmartDashboard.putNumber("LimeLightY", y);
         SmartDashboard.putNumber("LimeLightCalculatedistance", distance);
+        SmartDashboard.putNumber("LimeLightCalculatediagdistance", diagDistance);
         SmartDashboard.putNumber("LimeLightArea", area);
 
         

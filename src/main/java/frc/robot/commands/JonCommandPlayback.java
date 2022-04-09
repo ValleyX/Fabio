@@ -396,13 +396,13 @@ public class JonCommandPlayback extends CommandBase {
         if (buttonrbd == true && buttonA == true )
         {
         
-                m_deathClimbers.getDeathClimbers().set(true);
+                //m_deathClimbers.getDeathClimbers().set(true);
                 
         }
 
         else
         {
-            m_deathClimbers.getDeathClimbers().set(false);
+            //m_deathClimbers.getDeathClimbers().set(false);
         }
 
     
