@@ -14,6 +14,9 @@ package frc.robot;
 
 import edu.wpi.first.hal.FRCNetComm.tInstances;
 import edu.wpi.first.hal.FRCNetComm.tResourceType;
+
+import com.ctre.phoenix.motorcontrol.NeutralMode;
+
 import edu.wpi.first.cameraserver.CameraServer;
 import edu.wpi.first.hal.HAL;
 import edu.wpi.first.wpilibj.TimedRobot;
@@ -21,6 +24,8 @@ import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
 import frc.robot.commands.JonCommandRecored;
 import frc.robot.commands.TurnAnglePID_IMU;
+import frc.robot.commands.*;
+import frc.robot.subsystems.*;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -143,6 +148,12 @@ public class Robot extends TimedRobot {
 
     @Override
     public void testInit() {
+        DriveTrain m_driveTrain = new DriveTrain();
+        m_driveTrain.getDifferentialDrive().tankDrive(0, 0);
+        m_driveTrain.getLeftBack().setNeutralMode(NeutralMode.Coast);
+        m_driveTrain.getLeftFront().setNeutralMode(NeutralMode.Coast);
+        m_driveTrain.getRightBack().setNeutralMode(NeutralMode.Coast);
+        m_driveTrain.getLeftBack().setNeutralMode(NeutralMode.Coast);
 /*
         m_testCommand = m_robotContainer.getTestCommand();
 
